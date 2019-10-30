@@ -41,7 +41,7 @@ LIRI is like iPhone's SIRI. However, while SIRI is a Speech Interpretation and R
    * Actors in the movie.
    * If the user doesn't type a movie in, the program will output data for the movie 'Mr. Nobody'.
 4. **Do-what-it-says**
-   *It should run `spotify-this-song` for "I Want it That Way," as follows the text in the file random.txt.
+   * It should run `spotify-this-song` for "I Want it That Way," as follows the text in the file random.txt.
 
 - - -
 
