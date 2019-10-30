@@ -30,32 +30,43 @@ function followingCommands(command, search) {
 };
 
 function concertThis(search) {
-    axios.get("https://rest.bandsintown.com/artists/" + search + "/events?app_id=codingbootcamp")
-    .then(function(response) {
-        for (var i = 0; i < 3; i++) {
-           var dateTime = moment(response.data[i].datetime); //Saves datetime response into a variable
-           console.log("!-!-!-!-!-!-!-!-!-!-!-!-Concert!-!-!-!-!-!-!-!-!-!-!-!-!");
-           console.log("Line Up: " + response.data[i].lineup);
-           console.log("Venue Name: " + response.data[i].venue.name);
-           console.log("Venue Location: " + response.data[i].venue.city);
-           console.log("Date of the Event: " + dateTime.format("MMMM Do YYYY"));
-           console.log("!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!");
-        }
-        // to view all the data that response pulls back
-        // console.log(response, null, 2);
-        // console.log(response.data, null, 2);
-        // }
-    })
-    .catch(function (error) {
-        console.log("An error has occurred");
-        console.log("Try a different artist/band name!");
-        console.log("!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!");
-    });
+    if (!search) {
+        noValueconcertThis();
+    } else {
+        axios.get("https://rest.bandsintown.com/artists/" + search + "/events?app_id=codingbootcamp")
+            .then(function (response) {
+                for (var i = 0; i < 3; i++) {
+                    var dateTime = moment(response.data[i].datetime); //Saves datetime response into a variable
+                    console.log("!-!-!-!-!-!-!-!-!-!-!-!-Concert!-!-!-!-!-!-!-!-!-!-!-!-!");
+                    console.log("Line Up: " + response.data[i].lineup);
+                    console.log("Venue Name: " + response.data[i].venue.name);
+                    console.log("Venue Location: " + response.data[i].venue.city);
+                    console.log("Date of the Event: " + dateTime.format("MMMM Do YYYY"));
+                    console.log("!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!");
+                }
+                // to view all the data that response pulls back
+                // console.log(response, null, 2);
+                // console.log(response.data, null, 2);
+                // }
+            })
+            .catch(function () {
+                console.log("An error has occurred");
+                console.log("Try a different artist/band name!");
+                console.log("!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!");
+            });
+    }
+};
+
+function noValueconcertThis() {
+    console.log("!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!");
+    console.log("An error has occurred");
+    console.log("Please provide an artist/band name");
+    console.log("!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!");
 };
 
 function showSpotify(search) {
     if (!search) {
-        search = "The Sign";
+        search = "The Sign Ace"; // so when you dont put anything after "spotify-this-song" it will defalut to "The Sign" by "Ace of Bass"
     }
 
     spotify
@@ -80,6 +91,31 @@ function showSpotify(search) {
             console.log("!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!");
         });
 
+};
+
+function movieThis(search) {
+    if(!search) {
+        search = "mr nobody";
+    }
+    axios.get("https://www.omdbapi.com/?t=" + search + "&y=&plot=short&apikey=trilogy")
+    .then(function(response) { 
+        console.log("!-!-!-!-!-!-!-!-!-!-!-!-Movie!-!-!-!-!-!-!-!-!-!-!-!-!");
+        console.log("Movie Title: " + response.data.Title); 
+        console.log("Year of Release: " + response.data.Year);
+        console.log("IMDB Rating: " + response.data.imdbRating);
+        console.log("Rotten Tomatoes Rating: " + response.data.Ratings[1].Value);
+        console.log("Country Produced: " + response.data.Country);
+        console.log("Language: " + response.data.Language);
+        console.log("Plot: " + response.data.Plot);
+        console.log("Actors/Actresses: " + response.data.Actors);
+        console.log("!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!");
+    })
+    .catch(function (err) {
+        console.log("An error has occurred");
+        console.log("Try a different movie title!");
+        console.log("!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!");
+    });
+    
 };
 
 function doThis() {
