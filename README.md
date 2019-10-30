@@ -55,14 +55,16 @@ LIRI is like iPhone's SIRI. However, while SIRI is a Speech Interpretation and R
    * [Axios](https://www.npmjs.com/package/axios)
    * [Moment](https://www.npmjs.com/package/moment)
    * [DotEnv](https://www.npmjs.com/package/dotenv)
-4. Create a .env file in the same directory as the rest of the files. It should look similar to this:
+4. Go to <https://developer.spotify.com/my-applications/#!/> and obtain your key and secret. 
+4. Now go into the Keys.js file and plug in your key and secret numbers. You numbers should be where the hashtags are:
 
 ```js
-# Spotify API keys
+console.log('this is loaded');
 
-SPOTIFY_ID=your-spotify-id
-SPOTIFY_SECRET=your-spotify-secret
-
+exports.spotify = {
+  id: #############,
+  secret: ###############
+};
 ```
 5. Run the commands.
 
@@ -82,7 +84,7 @@ SPOTIFY_SECRET=your-spotify-secret
 
     ![Results](screenshots/concert-no-search.png)
 
-    **Example 1c**: Run the `concert-this` command with a invaild search parameter
+    **Example 1c**: Run the `concert-this` command with a invalid search parameter
     
         node liri.js concert-this "name of artist or band"
     
@@ -90,32 +92,62 @@ SPOTIFY_SECRET=your-spotify-secret
 
     ![Results](screenshots/concert-wrong-search.png)
 
-    **Example 2**: Run the `spotify-this-song` command
+    **Example 2a**: Run the `spotify-this-song` command with a search parameter
     
         node liri.js spotify-this-song "name of song or artist/band"
     
-    Output: The system will display a list of information associated with the song. It can result in multiple records. The system will also log all the results in the log.txt file. See screen-shot below:
+    See screen-shot below:
 
-    ![Results](/screenshots/spotify_this_results.PNG)
+    ![Results](/screenshots/song-correct-search.png)
 
-    **Example 3**: Run the `movie-this` command
+    **Example 2b**: Run the `spotify-this-song` command with no search parameter
     
-        node liri.js movie-this <name of movie>
+        node liri.js spotify-this-song "name of song or artist/band"
     
-    Output: The system will display information associated with the movie. The system will also log all the results in the log.txt file. See screen-shot below:
+    See screen-shot below:
 
-    ![Results](/screenshots/movie_this_results.PNG)
+    ![Results](/screenshots/song-no-search.png)
+
+    **Example 2c**: Run the `spotify-this-song` command with a invalid parameter
+    
+        node liri.js spotify-this-song "name of song or artist/band"
+    
+    See screen-shot below:
+
+    ![Results](/screenshots/song-wrong-search.png)
+
+    **Example 3a**: Run the `movie-this` command with a search parameter
+    
+        node liri.js movie-this "name of movie"
+    
+    See screen-shot below:
+
+    ![Results](/screenshots/movie-correct-search.png)
+
+    **Example 3b**: Run the `movie-this` command with no parameter
+    
+        node liri.js movie-this "name of movie"
+    
+    See screen-shot below:
+
+    ![Results](/screenshots/movie-no-search.png)
+
+    **Example 3c**: Run the `movie-this` command with a invalid parameter
+    
+        node liri.js movie-this "name of movie"
+    
+    See screen-shot below:
+
+    ![Results](/screenshots/movie-wrong-search.png)
 
 
     **Example 4**: Run the `do-what-it-says` command
         
         node liri.js do-what-it-says
-        
-    Output: The system will read the text in the random.txt file, and perform the comman listed in the random.txt file. 
     
     See screen-shot below:
 
-    ![Results](/screenshots/dothis_this_results.PNG)
+    ![Results](/screenshots/do-what-it-says.png)
 
 - - -
 
