@@ -17,7 +17,16 @@ LIRI is like iPhone's SIRI. However, while SIRI is a Speech Interpretation and R
 
    * `do-what-it-says`
 
+## What Each Command Should Do
+
+1. Concert-this
+   * Provide the Line-up of Artist preforming
+   * Name of the venue
+   * Venue location
+   * Date of the Event (format this as "MM/DD/YYYY")
+
 - - -
+
 ## HOW TO USE LIRI
 ### **Step by Step instructions**
 
@@ -37,14 +46,15 @@ SPOTIFY_ID=your-spotify-id
 SPOTIFY_SECRET=your-spotify-secret
 
 ```
+5. Run the commands.
 
     **Example 1a**: Run the `concert-this` command
     
         node liri.js concert-this "name of artist or band"
     
-    Output: The system will display a list of all events and locations where the artist or band will perform. It can result in multiple records. The system will also log all the results in the log.txt file. See screen-shot below:
+    See screen-shot below:
 
-    ![Results](/screenshots/concert_this_results.PNG)
+    ![Results](/screenshots/concert-correct-search.png)
 
     **Example 2**: Run the `spotify-this-song` command
     
